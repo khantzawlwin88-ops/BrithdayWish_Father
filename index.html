@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, ဖေကြီး</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Padauk:wght@400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        warmSand: '#F5EBE0',
+                        warmBrown: '#6D4C41',
+                        darkBrown: '#3E2723',
+                        luxuryGold: '#C5A880',
+                        darkGold: '#8C6D3F'
+                    },
+                    fontFamily: {
+                        padauk: ['Padauk', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        hand: ['Caveat', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-[#FDFBF7] text-[#3E2723]">
+
+    <!-- 1. ELEGANT INTRO / INVITATION CARD COVER -->
+    <div id="cake-cover" class="fixed inset-0 z-50 flex items-center justify-center bg-[#2C1D1A] transition-opacity duration-1000 p-6">
+        <div class="max-w-md w-full bg-[#FAF6F0] p-8 sm:p-12 rounded-lg border-2 border-[#C5A880]/40 text-center shadow-2xl relative overflow-hidden">
+            <!-- Decorative Gold Corner Lines -->
+            <div class="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-[#C5A880]"></div>
+            <div class="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-[#C5A880]"></div>
+            <div class="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-[#C5A880]"></div>
+            <div class="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-[#C5A880]"></div>
+
+            <p class="font-cinzel text-xs uppercase tracking-[0.3em] text-[#8C6D3F] mb-4">A Birthday Tribute</p>
+            <h1 class="font-serif text-3xl sm:text-4xl text-[#3E2723] font-bold mb-3">Happy Birthday</h1>
+            <h2 class="font-padauk text-2xl font-bold text-[#6D4C41] mb-6">ဖေကြီး</h2>
+            
+            <div class="w-16 h-[1px] bg-[#C5A880] mx-auto mb-8"></div>
+            
+            <p class="font-padauk text-sm text-[#6D4C41]/80 mb-8 leading-relaxed">
+                ဖေကြီးအတွက် အမှတ်တရ ခရီးစဉ်များနှင့် မေတ္တာစာလွှာကို လှဲပျူစွာ ဖွင့်ဟဖတ်ရှုရန် ဖိတ်ခေါ်အပ်ပါသည်။
+            </p>
+
+            <button onclick="openBirthdaySite()" class="wax-seal-btn group relative px-8 py-3.5 bg-[#3E2723] text-[#FDFBF7] font-serif text-sm tracking-widest uppercase rounded-sm border border-[#C5A880]/50 hover:bg-[#6D4C41] transition duration-500 shadow-lg">
+                <span>Open Celebration</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN WEBSITE CONTENT -->
+    <div id="main-content" class="hidden opacity-0 transition-opacity duration-1000">
+        
+        <!-- HERO SECTION -->
+        <header class="relative pt-20 pb-16 px-4 text-center border-b border-[#C5A880]/20 bg-gradient-to-b from-[#F5EBE0]/60 to-[#FDFBF7]">
+            <div class="max-w-4xl mx-auto">
+                <span class="font-cinzel text-xs tracking-[0.3em] uppercase text-[#8C6D3F] block mb-2">November 7</span>
+                <h1 class="text-4xl sm:text-6xl font-serif text-[#3E2723] mb-3">Happy Birthday, ဖေကြီး</h1>
+                <p class="text-xl sm:text-2xl text-[#8C6D3F] font-serif italic mb-6">"Today is Your Day"</p>
+                <div class="w-20 h-[1px] bg-[#C5A880] mx-auto"></div>
+            </div>
+        </header>
+
+        <!-- WISH WALL SECTION -->
+        <section class="py-16 px-4 max-w-5xl mx-auto">
+            <h2 class="font-serif text-2xl font-bold text-center text-[#3E2723] mb-12 tracking-wide uppercase">
+                Warmest Wishes
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-none border-l-2 border-[#C5A880] shadow-sm hover:shadow-md transition">
+                    <p class="text-[#3E2723] leading-relaxed font-padauk">“ဖေကြီးရဲ့ မွေးနေ့မှာ ကျန်းမာရေးတွေ အမြဲကောင်းမွန်ပြီး ပျော်ရွှင်စရာတွေနဲ့ ပြည့်နှက်နေပါစေလို့ ဆုတောင်းပေးပါတယ်။”</p>
+                </div>
+                <div class="bg-white p-8 rounded-none border-l-2 border-[#C5A880] shadow-sm hover:shadow-md transition">
+                    <p class="text-[#3E2723] leading-relaxed font-padauk">“မိသားစုအတွက် အမြဲမားမားမတ်မတ် ရပ်တည်ပေးတဲ့ ဖေကြီးကို ကျေးဇူးအထူးတင်ရှိပါတယ်။ ဖေကြီး ပျော်ရွှင်ရတဲ့ နေ့ရက်တွေ များစွာ ပိုင်ဆိုင်ပါစေ။”</p>
+                </div>
+                <div class="bg-white p-8 rounded-none border-l-2 border-[#C5A880] shadow-sm hover:shadow-md transition">
+                    <p class="text-[#3E2723] leading-relaxed font-padauk">“ဘဝခရီးလမ်းမှာ ဖေကြီးရဲ့ သွန်သင်ဆုံးမမှုတွေနဲ့အတူ ရှေ့ဆက်ရတာ ဂုဏ်ယူရပါတယ်။ မွေးနေ့မှာ စိတ်၏ချမ်းသာခြင်း၊ ကိုယ်၏ကျန်းမာခြင်းနဲ့ ပြည့်စုံပါစေ ဖေကြီးရေ!”</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEMORY TRIPS SECTION -->
+        <section class="py-16 px-4 bg-[#F5EBE0]/40 border-y border-[#C5A880]/20">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="font-serif text-3xl text-[#3E2723] tracking-wide uppercase">Travel Album</h2>
+                    <p class="text-[#6D4C41] font-padauk mt-2 text-sm">ခရီးစဉ်တစ်ခုစီကို နှိပ်၍ အမှတ်တရပုံများ (၁၀ ပုံစီ) ကြည့်ရှုနိုင်ပါသည်</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <!-- Trip Card 1 -->
+                    <div onclick="openGallery(1)" class="group cursor-pointer bg-white rounded-none border border-[#C5A880]/30 overflow-hidden shadow-sm hover:shadow-xl transition duration-500">
+                        <div class="h-64 bg-[#6D4C41]/10 relative overflow-hidden">
+                            <img src="images/trip1-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Trip 1">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition duration-500"></div>
+                            <span class="absolute bottom-4 right-4 bg-[#3E2723]/80 text-[#FDFBF7] font-cinzel text-xs px-3 py-1 tracking-widest">10 Photos</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif text-xl font-bold text-[#3E2723]">Trip Memory 1</h3>
+                            <p class="font-padauk text-xs text-[#6D4C41] mt-1 uppercase tracking-wider">Tap to view gallery</p>
+                        </div>
+                    </div>
+
+                    <!-- Trip Card 2 -->
+                    <div onclick="openGallery(2)" class="group cursor-pointer bg-white rounded-none border border-[#C5A880]/30 overflow-hidden shadow-sm hover:shadow-xl transition duration-500">
+                        <div class="h-64 bg-[#6D4C41]/10 relative overflow-hidden">
+                            <img src="images/trip2-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Trip 2">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition duration-500"></div>
+                            <span class="absolute bottom-4 right-4 bg-[#3E2723]/80 text-[#FDFBF7] font-cinzel text-xs px-3 py-1 tracking-widest">10 Photos</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif text-xl font-bold text-[#3E2723]">Trip Memory 2</h3>
+                            <p class="font-padauk text-xs text-[#6D4C41] mt-1 uppercase tracking-wider">Tap to view gallery</p>
+                        </div>
+                    </div>
+
+                    <!-- Trip Card 3 -->
+                    <div onclick="openGallery(3)" class="group cursor-pointer bg-white rounded-none border border-[#C5A880]/30 overflow-hidden shadow-sm hover:shadow-xl transition duration-500">
+                        <div class="h-64 bg-[#6D4C41]/10 relative overflow-hidden">
+                            <img src="images/trip3-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1476514525535-ce74f4581a80?w=800'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Trip 3">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition duration-500"></div>
+                            <span class="absolute bottom-4 right-4 bg-[#3E2723]/80 text-[#FDFBF7] font-cinzel text-xs px-3 py-1 tracking-widest">10 Photos</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif text-xl font-bold text-[#3E2723]">Trip Memory 3</h3>
+                            <p class="font-padauk text-xs text-[#6D4C41] mt-1 uppercase tracking-wider">Tap to view gallery</p>
+                        </div>
+                    </div>
+
+                    <!-- Trip Card 4 -->
+                    <div onclick="openGallery(4)" class="group cursor-pointer bg-white rounded-none border border-[#C5A880]/30 overflow-hidden shadow-sm hover:shadow-xl transition duration-500">
+                        <div class="h-64 bg-[#6D4C41]/10 relative overflow-hidden">
+                            <img src="images/trip4-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=800'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Trip 4">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition duration-500"></div>
+                            <span class="absolute bottom-4 right-4 bg-[#3E2723]/80 text-[#FDFBF7] font-cinzel text-xs px-3 py-1 tracking-widest">10 Photos</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-serif text-xl font-bold text-[#3E2723]">Trip Memory 4</h3>
+                            <p class="font-padauk text-xs text-[#6D4C41] mt-1 uppercase tracking-wider">Tap to view gallery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAD & ME POLAROID SECTION -->
+        <section class="py-16 px-4 max-w-5xl mx-auto">
+            <h2 class="font-serif text-3xl font-bold text-center text-[#3E2723] mb-12 uppercase tracking-wide">Dad & Me Moments</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                <!-- Polaroid 1 -->
+                <div class="bg-white p-4 pb-8 polaroid-shadow rounded-none border border-gray-100 transform -rotate-1 hover:rotate-0 hover:scale-105 transition duration-500">
+                    <div class="h-48 sm:h-64 bg-gray-100 overflow-hidden mb-4">
+                        <img src="images/dad-me-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1544717305-2782549b5136?w=600'" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-center font-serif italic text-base text-[#3E2723]">Memory I</p>
+                </div>
+                <!-- Polaroid 2 -->
+                <div class="bg-white p-4 pb-8 polaroid-shadow rounded-none border border-gray-100 transform rotate-2 hover:rotate-0 hover:scale-105 transition duration-500">
+                    <div class="h-48 sm:h-64 bg-gray-100 overflow-hidden mb-4">
+                        <img src="images/dad-me-2.jpg" onerror="this.src='https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600'" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-center font-serif italic text-base text-[#3E2723]">Memory II</p>
+                </div>
+                <!-- Polaroid 3 -->
+                <div class="bg-white p-4 pb-8 polaroid-shadow rounded-none border border-gray-100 transform -rotate-2 hover:rotate-0 hover:scale-105 transition duration-500">
+                    <div class="h-48 sm:h-64 bg-gray-100 overflow-hidden mb-4">
+                        <img src="images/dad-me-3.jpg" onerror="this.src='https://images.unsplash.com/photo-1474552284527-440263f69b82?w=600'" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-center font-serif italic text-base text-[#3E2723]">Memory III</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOVE LETTER SURPRISE & THANK YOU SECTION -->
+        <section class="py-20 px-4 bg-[#F5EBE0]/60 text-center border-t border-[#C5A880]/20">
+            <div class="max-w-3xl mx-auto">
+                
+                <!-- LUXURY LETTER BUTTON -->
+                <div class="mb-14 flex flex-col items-center">
+                    <span class="font-serif italic text-lg text-[#8C6D3F] mb-4">A Personal Message for You</span>
+                    <button onclick="openLetterModal()" class="px-10 py-4 bg-[#3E2723] text-[#FDFBF7] font-serif text-sm tracking-[0.2em] uppercase rounded-none border border-[#C5A880] shadow-xl hover:bg-[#6D4C41] transition duration-500">
+                        Read Personal Letter
+                    </button>
+                </div>
+
+                <div class="bg-white p-8 sm:p-10 rounded-none border border-[#C5A880]/30 text-left mb-10 shadow-sm">
+                    <h3 class="font-serif text-xl font-bold text-[#3E2723] mb-6 tracking-wide uppercase">
+                        Reasons I Love You
+                    </h3>
+                    <ul class="space-y-4 text-[#3E2723] font-padauk">
+                        <li class="flex items-start gap-3"><span class="text-[#8C6D3F] font-serif font-bold">I.</span> <span>မိသားစုအပေါ် တာဝန်ယူမှုအပြည့်အဝရှိခြင်း</span></li>
+                        <li class="flex items-start gap-3"><span class="text-[#8C6D3F] font-serif font-bold">II.</span> <span>အမြဲတမ်း နွေးထွေးစွာဂရုစိုက်ပေးတတ်ခြင်း</span></li>
+                        <li class="flex items-start gap-3"><span class="text-[#8C6D3F] font-serif font-bold">III.</span> <span>ဘဝအတွက် မှန်ကန်တဲ့လမ်းပြသင်ကြားပေးမှုများရှိခြင်း</span></li>
+                    </ul>
+                </div>
+
+                <div class="p-8 bg-white rounded-none border border-[#C5A880]/30 shadow-sm">
+                    <h3 class="font-serif text-lg font-bold text-[#8C6D3F] uppercase tracking-wider mb-2">Thank You, Dad</h3>
+                    <p class="font-padauk text-[#3E2723]">“ဖေကြီးပေးဆပ်ခဲ့သမျှအရာရာတိုင်းအတွက် ကျေးဇူးအထူးတင်ရှိပါတယ်... ကျန်းမာပျော်ရွှင်စွာနဲ့ အမြဲတမ်း ကျွန်တော်တို့နဲ့အတူ ရှိနေပေးပါ။”</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-8 text-center text-[#8C6D3F] text-xs font-serif tracking-widest uppercase border-t border-[#C5A880]/20">
+            Dedicated to My Beloved Dad
+        </footer>
+    </div>
+
+    <!-- TRIP GALLERY MODAL -->
+    <div id="gallery-modal" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4">
+        <div class="bg-[#FAF6F0] rounded-none border border-[#C5A880] max-w-4xl w-full p-6 relative flex flex-col shadow-2xl">
+            <button onclick="closeGallery()" class="absolute top-4 right-5 text-[#3E2723] hover:text-[#8C6D3F] text-3xl font-serif z-10">&times;</button>
+            <h3 id="modal-title" class="font-serif text-xl text-[#3E2723] mb-4 text-center uppercase tracking-wider">Trip Photo Album</h3>
+            
+            <div class="relative h-80 sm:h-[450px] bg-black/5 flex items-center justify-center">
+                <img id="modal-img" src="" class="max-h-full max-w-full object-contain">
+                <button onclick="prevPhoto()" class="absolute left-3 bg-[#3E2723]/70 text-white p-3 hover:bg-[#3E2723] transition">❮</button>
+                <button onclick="nextPhoto()" class="absolute right-3 bg-[#3E2723]/70 text-white p-3 hover:bg-[#3E2723] transition">❯</button>
+            </div>
+            
+            <div id="thumbnail-container" class="flex gap-2 overflow-x-auto mt-4 pb-2">
+                <!-- Thumbnails injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ELEGANT LETTER POPUP MODAL -->
+    <div id="letter-modal" class="fixed inset-0 z-50 bg-black/85 hidden flex items-center justify-center p-4">
+        <div class="bg-[#FAF6F0] border-2 border-[#C5A880] max-w-2xl w-full p-8 sm:p-12 relative shadow-2xl overflow-y-auto max-h-[85vh]">
+            <button onclick="closeLetterModal()" class="absolute top-4 right-6 text-[#3E2723] hover:text-[#8C6D3F] text-3xl font-serif">&times;</button>
+            
+            <div class="text-center mb-8">
+                <p class="font-cinzel text-xs uppercase tracking-[0.25em] text-[#8C6D3F]">A Personal Note</p>
+                <h3 class="font-serif text-2xl text-[#3E2723] font-bold mt-1">To My Father</h3>
+                <div class="w-12 h-[1px] bg-[#C5A880] mx-auto mt-3"></div>
+            </div>
+
+            <div class="text-left font-serif text-lg sm:text-xl text-[#3E2723] leading-relaxed space-y-6 bg-white p-8 border border-[#C5A880]/20 shadow-inner">
+                <p class="italic font-bold text-[#8C6D3F]">Dear Dad,</p>
+                <p>Your tireless efforts and the boundless love with which you fulfilled every single need of ours have always been my greatest strength in life. I will never forget your sacrifices and how you guided and pushed me forward to reach this very path—my Software Engineer career path.</p>
+                <p>Even though we haven't been able to travel together like we used to lately due to current school expenses, please know that this is only temporary. I am firmly determined that once I stand firmly on my own feet as a great Software Engineer, I will take you on wonderful, carefree trips just like the old days.</p>
+                <p>When that day comes, I promise to make you the happiest person in the world. I will do my absolute best to repay everything you have sacrificed for us. May you be blessed with peace of mind, good health, and boundless happiness on your birthday.</p>
+                <p class="italic text-right font-bold text-[#8C6D3F] mt-8">Happy Birthday, Dad</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
