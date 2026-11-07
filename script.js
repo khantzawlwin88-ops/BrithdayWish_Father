@@ -18,7 +18,6 @@ function openBirthdaySite() {
     }, 1000);
 }
 
-// Gallery Data (10 photos per trip)
 let currentTrip = 1;
 let currentPhotoIndex = 0;
 
@@ -31,15 +30,32 @@ function openGallery(tripNum) {
     const thumbContainer = document.getElementById('thumbnail-container');
     thumbContainer.innerHTML = '';
     
-    for (let i = 1; i <= 10; i++) {
+    const startImgIndex = (tripNum - 1) * 10 + 1;
+    
+    for (let i = 0; i < 10; i++) {
+        const imgNum = startImgIndex + i;
         const img = document.createElement('img');
-        img.src = `images/trip${tripNum}-${i}.jpg`;
-        img.onerror = function() { this.src = `https://picsum.photos/seed/trip${tripNum}-${i}/300/200`; };
-        img.className = `w-16 h-12 object-cover rounded-none cursor-pointer border-2 ${i-1 === currentPhotoIndex ? 'border-[#C5A880]' : 'border-transparent opacity-60'}`;
-        img.onclick = () => {
-            currentPhotoIndex = i - 1;
-            updateModalPhoto();
+        
+        img.src = `${imgNum}.jpg`;
+        img.onerror = function() {
+            if (!this.src.includes('.jpeg')) {
+                this.src = `${imgNum}.jpeg`;
+            } else if (!this.src.includes('.png')) {
+                this.src = `${imgNum}.png`;
+            } else {
+                this.src = `https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300`;
+            }
         };
+
+        img.className = `w-16 h-12 object-cover rounded-none cursor-pointer border-2 ${i === currentPhotoIndex ? 'border-[#C5A880]' : 'border-transparent opacity-60'}`;
+        
+        img.onclick = (function(index) {
+            return function() {
+                currentPhotoIndex = index;
+                updateModalPhoto();
+            };
+        })(i);
+        
         thumbContainer.appendChild(img);
     }
     
@@ -47,11 +63,19 @@ function openGallery(tripNum) {
 }
 
 function updateModalPhoto() {
-    const imgPath = `images/trip${currentTrip}-${currentPhotoIndex + 1}.jpg`;
+    const startImgIndex = (currentTrip - 1) * 10 + 1;
+    const actualImgNum = startImgIndex + currentPhotoIndex;
+    
     const mainImg = document.getElementById('modal-img');
-    mainImg.src = imgPath;
+    mainImg.src = `${actualImgNum}.jpg`;
     mainImg.onerror = function() {
-        this.src = `https://picsum.photos/seed/trip${currentTrip}-${currentPhotoIndex + 1}/800/600`;
+        if (!this.src.includes('.jpeg')) {
+            this.src = `${actualImgNum}.jpeg`;
+        } else if (!this.src.includes('.png')) {
+            this.src = `${actualImgNum}.png`;
+        } else {
+            this.src = `https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800`;
+        }
     };
     
     const thumbs = document.getElementById('thumbnail-container').children;
